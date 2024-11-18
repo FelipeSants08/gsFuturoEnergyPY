@@ -66,7 +66,7 @@ class emissoesCarbono(emissoesCarbonoBase):
     class Config:
         orm_mode = True
 
-class emissoesCarbonoCriar(emissoesCarbono):
+class emissoesCarbonoCriar(emissoesCarbonoBase):
     pass
 
 class emissoesCarbonoAtualizar(BaseModel):
