@@ -32,8 +32,8 @@ class ProjetoSustentavel(Base):
     descricao = Column('DESCRICAO', String(255), nullable=False)
     custo = Column('CUSTO', Float, nullable=False)
     status = Column('STATUS', String(50), nullable=False)
-    tipo_fonte_id = Column('ID_TIPO_FONTE', Integer, ForeignKey('PF0645.TIPO_FONTES.ID_TIPO_FONTE'))
-    regiao_id = Column('ID_REGIAO', Integer, ForeignKey('PF0645.REGIOES_SUSTENTAVEIS.ID_REGIAO'))
+    tipo_fonte_id = Column('ID_TIPO_FONTE', Integer, ForeignKey('PF0645.TIPO_FONTES.ID_TIPO_FONTE'), nullable=False)
+    regioes_sustentaveis_id = Column('ID_REGIAO', Integer, ForeignKey('PF0645.REGIOES_SUSTENTAVEIS.ID_REGIAO'), nullable=False)
 
     tipo_fonte = relationship("TipoFonte", back_populates="projetos")
     regiao = relationship("RegiaoSustentavel", back_populates="projetos")

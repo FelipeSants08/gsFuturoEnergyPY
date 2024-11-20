@@ -8,7 +8,7 @@ class tipoFonte(tipoFonteBase):
     id: int
     
     class Config:
-        orm_mode = True
+        orm_attributes = True
 
 class tipoFonteCriar(tipoFonteBase):
     pass
@@ -25,7 +25,7 @@ class regioesSustentaveis(regioesSustentaveisBase):
     id: int
     
     class Config:
-        orm_mode = True
+        orm_attributes = True
 
 class regioesSustentaveisCriar(regioesSustentaveisBase):
     pass
@@ -59,16 +59,16 @@ class projetosSustentaveisAtualizar(BaseModel):
     
 class emissoesCarbonoBase(BaseModel):
     tipo_fonte_id: int
-    emissao: str
+    emissao: float
 
 class emissoesCarbono(emissoesCarbonoBase):
     id: int
     class Config:
-        orm_mode = True
+        orm_attributes = True
 
 class emissoesCarbonoCriar(emissoesCarbonoBase):
     pass
 
 class emissoesCarbonoAtualizar(BaseModel):
     tipo_fonte_id: Optional[int] = None
-    emissao: Optional[str] = None
+    emissao: Optional[float] = None
