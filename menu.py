@@ -20,10 +20,10 @@ def get_db():
 def menu(db: Session):
     while True:
         print("\nEscolha uma opção:")
-        print("1. Gerenciar TipoFonte")
-        print("2. Gerenciar RegiaoSustentavel")
-        print("3. Gerenciar ProjetoSustentavel")
-        print("4. Gerenciar EmissaoCarbono")
+        print("1. Gerenciar Tipo Fonte")
+        print("2. Gerenciar Regiao Sustentavel")
+        print("3. Gerenciar Projeto Sustentavel")
+        print("4. Gerenciar Emissao Carbono")
         print("5. Sair")
         
         opcao = input("Opção: ")
@@ -52,16 +52,16 @@ def menu(db: Session):
 def gerenciar_tipo_fonte(db: Session):
     while True:
         print("\nGerenciar TipoFonte:")
-        print("1. Criar TipoFonte")
-        print("2. Listar TipoFontes")
-        print("3. Atualizar TipoFonte")
-        print("4. Deletar TipoFonte")
+        print("1. Criar Tipo Fonte")
+        print("2. Listar Tipo Fontes")
+        print("3. Atualizar Tipo Fonte")
+        print("4. Deletar Tipo Fonte")
         print("5. Voltar ao Menu Principal")
         
         opcao = input("Opção: ")
 
         if opcao == '1':
-            nome = input("Digite o nome do TipoFonte: ")
+            nome = input("Digite o nome do Tipo Fonte: ")
             tipo_fonte = schemas.tipoFonteCriar(nome=nome)
             try:
                 tipo_fonte_criado = criar_tipo_fonte(db, tipo_fonte)
@@ -75,17 +75,17 @@ def gerenciar_tipo_fonte(db: Session):
                 print(f"ID: {tipo_fonte.id}, Nome: {tipo_fonte.nome}")
 
         elif opcao == '3':
-            tipo_fonte_id = int(input("Digite o ID do TipoFonte a ser atualizado: "))
+            tipo_fonte_id = int(input("Digite o ID do Tipo Fonte a ser atualizado: "))
             nome = input("Digite o novo nome: ")
             tipo_fonte_atualizar = schemas.tipoFonteAtualizar(nome=nome)
             try:
                 tipo_fonte_atualizado = atualizar_tipo_fonte(db, tipo_fonte_id, tipo_fonte_atualizar)
-                print(f"TipoFonte '{tipo_fonte_atualizado.nome}' atualizado com sucesso!")
+                print(f"Tipo Fonte '{tipo_fonte_atualizado.nome}' atualizado com sucesso!")
             except HTTPException as e:
                 print(f"Erro: {e.detail}")
 
         elif opcao == '4':
-            tipo_fonte_id = int(input("Digite o ID do TipoFonte a ser deletado: "))
+            tipo_fonte_id = int(input("Digite o ID do Tipo Fonte a ser deletado: "))
             try:
                 mensagem = deletar_tipo_fonte(db, tipo_fonte_id)
                 print(mensagem["mensagem"])
